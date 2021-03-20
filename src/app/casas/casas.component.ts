@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { CasasService } from './casas.service';
+import { TablaComponent } from '../tabla/tabla.component';
 
 @Component({
   selector: 'app-casas',
   templateUrl: './casas.component.html',
   styleUrls: ['./casas.component.css'],
 })
-export class CasasComponent implements OnInit {
-  casas: any;
+export class CasasComponent extends TablaComponent {
+  ngOnInit(): void {}
 
-  constructor(public service: CasasService) {}
-
-  ngOnInit(): void {
-    // this.service.getCasas().subscribe((data) => {
-    //   this.casas = data;
-    // });
+  SeleccionCasa() {
+    this.getAllEstudiantesCasas();
+  }
+  SeleccionP() {
+    this.getAllProfesores();
   }
 }

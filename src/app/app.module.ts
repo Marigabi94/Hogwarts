@@ -8,7 +8,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CasasComponent } from './casas/casas.component';
-import { CasasService } from './casas/casas.service';
 import { EstudiantesComponent } from './estudiantes/estudiantes.component';
 import { ProfesoresComponent } from './profesores/profesores.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -39,7 +38,7 @@ import { NuevoEstudianteComponent } from './nuevo-estudiante/nuevo-estudiante.co
     MatPaginatorModule,
     MatTableModule,
   ],
-  providers: [CasasService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
