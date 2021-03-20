@@ -41,8 +41,21 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #0a111f;
+  overflow-x: hidden;
 }
-
+.botones {
+  font-size: 2.5em;
+  font-weight: bold;
+  height: 8vh;
+  border-radius: 26px !important;
+  -webkit-border-radius: 26px !important;
+  -moz-border-radius: 26px !important;
+  -ms-border-radius: 26px !important;
+  -o-border-radius: 26px !important;
+}
+.botones:hover {
+  filter: opacity(0.5);
+}
 .font1 {
   font-family: "Tangerine", cursive;
 }
@@ -60,5 +73,14 @@ h1 {
 
 h2 {
   font-size: 2.5em;
-  margin: 0.5rem;
+  margin: 0;
+}
+
+table {
+  margin-top: 2rem;
+  width: 80%;
+}
+mat-paginator {
+  width: 80%;
+  margin-bottom: 3rem;
 }
