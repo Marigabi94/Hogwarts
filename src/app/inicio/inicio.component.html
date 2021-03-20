@@ -1,0 +1,38 @@
+<div
+  fxFill
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  style="padding-top: 2.5rem"
+>
+  <h1 class="font2">Hogwarts School</h1>
+  <img class="LogoHome" src="./assets/imagenes/pngegg.png" />
+  <h2 class="font2">Draco dormiens nunquam titilándus</h2>
+  <div fxFlex="row" fxLayoutAlign="space-evenly" class="ContentedorBotones">
+    <button
+      mat-raised-button
+      color="primary"
+      class="botones font1"
+      routerLink="casas"
+    >
+      Casas
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="botones font1"
+      routerLink="estudiantes"
+      (click)="getAllEstudiantes()"
+    >
+      Estudiantes
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="botones font1"
+      routerLink="profesores"
+      (click)="ButtonProfesores()"
+    >
+      Profesores
+    </button>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.imagen {
+  width: 6rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  box-shadow: -2px 2px 15px #ff8f00;
+}
+
+.mat-cell,
+.mat-header-cell {
+  text-align: center;
+  border-bottom-color: #ff8f00;
+}
+
+.mat-cell {
+  color: #ff8f00;
+  font-size: 2.2em;
+  padding: 1rem;
+  font-weight: 500;
+}
+.mat-header-cell {
+  background-color: #ff8f00;
+  color: #0a111f;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.mat-table {
+  background: transparent;
+  border-radius: 25px 25px 0 0;
+  -webkit-border-radius: 25px 25px 0 0;
+  -moz-border-radius: 25px 25px 0 0;
+  -ms-border-radius: 25px 25px 0 0;
+  -o-border-radius: 25px 25px 0 0;
+}
+
+mat-paginator {
+  background-color: transparent;
+  color: #ff8f00;
+}
+
+.mat-select-value {
+  color: #ff8f00 !important;
+}

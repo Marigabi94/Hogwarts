@@ -1,1 +1,52 @@
-<p>casas works!</p>
+<button mat-fab color="primary" style="margin: 1%" routerLink="">
+  <mat-icon>home</mat-icon>
+</button>
+<div fxLayout="column" fxLayoutAlign="space-evenly center" style="width: 100%">
+  <div fxFill fxLayout="row" fxLayoutAlign="space-evenly center">
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      type="submit"
+      style="cursor: pointer"
+      (click)="SeleccionCasa()"
+    >
+      <h2 class="font2">Gryffindor</h2>
+      <img
+        id="gryffindor"
+        class="Escudos"
+        src="./assets/imagenes/gryffindor.png"
+        (click)="SeleccionP()"
+      />
+    </div>
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      type="submit"
+      style="cursor: pointer"
+    >
+      <h2 class="font2">Slytherin</h2>
+      <img class="Escudos" src="./assets/imagenes/slytherin.png" />
+    </div>
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      type="submit"
+      style="cursor: pointer"
+    >
+      <h2 class="font2">Hufflepuff</h2>
+      <img class="Escudos" src="./assets/imagenes/hufflepuff.png" />
+    </div>
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      type="submit"
+      style="cursor: pointer"
+    >
+      <h2 class="font2">Ravenclaw</h2>
+      <img class="Escudos" src="./assets/imagenes/ravenclaw.png" />
+    </div>
+  </div>
+  <div fxFill>
+    <app-tabla></app-tabla>
+  </div>
+</div>
