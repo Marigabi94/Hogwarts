@@ -1,0 +1,19 @@
+.ContentedorBotones {
+  width: 100vw;
+  margin-top: 1rem;
+}
+.botones {
+  width: 15vw;
+  font-size: 2.5em;
+  font-weight: bold;
+  height: 8vh;
+  border-radius: 25px;
+}
+
+.botones:hover {
+  filter: opacity(0.5);
+}
+
+.LogoHome {
+  width: 15rem;
+}
