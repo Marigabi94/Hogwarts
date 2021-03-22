@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { TablaService } from './services/tabla.service';
 
 export interface PersonasElement {
@@ -35,7 +35,6 @@ export class TablaComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable) table: MatTable<any>;
 
   constructor(
     public tablaService: TablaService,
@@ -54,30 +53,21 @@ export class TablaComponent implements AfterViewInit {
       .subscribe((PersonasElement: any) => {
         this.sub(PersonasElement);
       });
-    this.changeDetectorRefs.detectChanges();
   }
-  // refresh(): void {
-  //   this.tablaService.method().subscribe((resources) => {
-  //     this.dataSource.data = resources;
-  //     this.dataSource.sort = this.sort;
-  //     this.dataSource.paginator = this.paginator;
-  //   });
-  //   this.table.renderRows();
-  // }
+
   getAllProfesores() {
     this.tablaService.getAllProfesores().subscribe((PersonasElement: any) => {
       this.sub(PersonasElement);
     });
-    this.changeDetectorRefs.detectChanges();
   }
 
   sub(PersonasElement: any) {
     this.dataSource = new MatTableDataSource(PersonasElement);
-    this.dataSource.data = PersonasElement;
-    this.dataSource.sort = this.sort;
+    this.dataSource = PersonasElement;
     this.changeDetectorRefs.detectChanges();
+    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource.data);
+    console.log(this.dataSource);
   }
 
   SeleccionTabla() {
