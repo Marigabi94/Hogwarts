@@ -1,60 +1,102 @@
 import {
-  Component,
-  OnInit,
   AfterViewInit,
+  Component,
   ViewChild,
-  Output,
+  ViewEncapsulation,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { TablaService } from './services/tabla.service';
+
+export interface PersonasElement {
+  house: string;
+  image: string;
+  name: string;
+  patronus: string;
+  dateOfBirth: string;
+  availableSizes: Array<string>;
+}
+
+const ELEMENT_DATA: PersonasElement[] = [];
 
 @Component({
   selector: 'app-tabla',
   templateUrl: './tabla.component.html',
   styleUrls: ['./tabla.component.css'],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class TablaComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = [
-    'name',
-    'patronus',
-    // 'age',
-    'image',
-  ];
+export class TablaComponent implements AfterViewInit {
+  getUse: number;
+  house: string;
+  displayedColumns: string[] = ['name', 'patronus', 'image'];
   dataSource = new MatTableDataSource<PersonasElement>(ELEMENT_DATA);
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(public tablaService: TablaService) {}
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatTable) table: MatTable<any>;
 
-  public getAllEstudiantes() {
-    this.tablaService.getAllEstudiantes().subscribe((todos) => {
-      console.log(todos);
+  constructor(
+    public tablaService: TablaService,
+    public changeDetectorRefs: ChangeDetectorRef
+  ) {}
+
+  getAllEstudiantes() {
+    this.tablaService.getAllEstudiantes().subscribe((PersonasElement: any) => {
+      this.sub(PersonasElement);
     });
   }
 
-  public getAllEstudiantesCasas() {
-    this.tablaService.getAllEstudiantesCasas().subscribe((todos) => {
-      console.log(todos);
+  getEstudiantesCasas(house: any): void {
+    this.tablaService
+      .getEstudiantesCasas(house)
+      .subscribe((PersonasElement: any) => {
+        this.sub(PersonasElement);
+      });
+    this.changeDetectorRefs.detectChanges();
+  }
+  // refresh(): void {
+  //   this.tablaService.method().subscribe((resources) => {
+  //     this.dataSource.data = resources;
+  //     this.dataSource.sort = this.sort;
+  //     this.dataSource.paginator = this.paginator;
+  //   });
+  //   this.table.renderRows();
+  // }
+  getAllProfesores() {
+    this.tablaService.getAllProfesores().subscribe((PersonasElement: any) => {
+      this.sub(PersonasElement);
     });
+    this.changeDetectorRefs.detectChanges();
   }
 
-  public getAllProfesores() {
-    this.tablaService.getAllProfesores().subscribe((todos) => {
-      console.log(todos);
-    });
+  sub(PersonasElement: any) {
+    this.dataSource = new MatTableDataSource(PersonasElement);
+    this.dataSource.data = PersonasElement;
+    this.dataSource.sort = this.sort;
+    this.changeDetectorRefs.detectChanges();
+    this.dataSource.paginator = this.paginator;
+    console.log(this.dataSource.data);
   }
 
-  ngOnInit() {}
+  SeleccionTabla() {
+    switch (this.getUse) {
+      case 1:
+        this.getAllEstudiantes();
+
+        break;
+      case 2:
+        this.getAllProfesores();
+
+        break;
+    }
+  }
+
+  ngOnInit() {
+    this.SeleccionTabla();
+  }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 }
-
-export interface PersonasElement {
-  name: string;
-  patronus: string;
-  // age: string;
-  image: string;
-  dateOfBirth: string;
-}
-
-const ELEMENT_DATA: PersonasElement[] = [];

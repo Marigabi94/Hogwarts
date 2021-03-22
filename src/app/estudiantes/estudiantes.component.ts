@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { TablaComponent } from '../tabla/tabla.component';
 
 @Component({
   selector: 'app-estudiantes',
   templateUrl: './estudiantes.component.html',
   styleUrls: ['./estudiantes.component.css'],
 })
-export class EstudiantesComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class EstudiantesComponent extends TablaComponent implements OnInit {
+  ngOnInit(): void {
+    this.getAllEstudiantes();
+  }
 }

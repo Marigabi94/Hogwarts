@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { TablaComponent } from '../tabla/tabla.component';
 
 @Component({
@@ -6,11 +6,17 @@ import { TablaComponent } from '../tabla/tabla.component';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css'],
 })
-export class InicioComponent extends TablaComponent {
-  ButtonEstudiantes() {
-    this.getAllEstudiantes();
+export class InicioComponent extends TablaComponent implements OnInit {
+  ButtonOpcionInicio(opcion: number) {
+    switch (opcion) {
+      case 1:
+        this.getUse = 1;
+        break;
+      case 2:
+        this.getUse = 2;
+        break;
+    }
   }
-  ButtonProfesores() {
-    this.getAllProfesores();
-  }
+
+  ngOnInit() {}
 }

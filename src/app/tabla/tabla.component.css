@@ -1,5 +1,5 @@
 .imagen {
-  width: 6rem;
+  width: 4.5rem;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -10,7 +10,7 @@
 
 .mat-cell,
 .mat-header-cell {
-  text-align: center;
+  text-align: center !important;
   border-bottom-color: #ff8f00;
 }
 
@@ -42,5 +42,27 @@ mat-paginator {
 }
 
 .mat-select-value {
-  color: #ff8f00 !important;
+  color: #ff8f00;
+}
+
+table {
+  margin-top: 2rem;
+  width: 80%;
+}
+mat-paginator {
+  width: 80%;
+  margin-bottom: 3rem;
+}
+
+.font1 {
+  font-family: "Tangerine", cursive;
+}
+
+.showFirstLastButtons {
+  background-color: transparent !important;
+}
+.mat-paginator-icon,
+.mat-icon-button {
+  color: #ff8f00;
+  background-color: transparent;
 }

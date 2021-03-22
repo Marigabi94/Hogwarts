@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { PersonasElement } from '../../../app/tabla/tabla.component';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TablaService {
+  configUrl = 'http://hp-api.herokuapp.com/api/characters';
   constructor(private http: HttpClient) {}
 
-  getAllEstudiantes() {
-    const path = 'http://hp-api.herokuapp.com/api/characters/students';
-    return this.http.get<PersonasElement>(path);
+  public getAllEstudiantes(): Observable<PersonasElement[]> {
+    return this.http.get<PersonasElement[]>(this.configUrl + '/students');
   }
 
-  getAllEstudiantesCasas() {
-    const path =
-      'http://hp-api.herokuapp.com/api/characters/house/{{nombreCasa}}';
-
-    return this.http.get<PersonasElement>(path);
+  public getEstudiantesCasas(house): Observable<PersonasElement[]> {
+    return this.http.get<PersonasElement[]>(this.configUrl + '/house/' + house);
   }
 
-  getAllProfesores() {
-    const path = 'http://hp-api.herokuapp.com/api/characters/staff';
-
-    return this.http.get<PersonasElement>(path);
+  public getAllProfesores(): Observable<PersonasElement[]> {
+    return this.http.get<PersonasElement[]>(this.configUrl + '/staff');
   }
 }
