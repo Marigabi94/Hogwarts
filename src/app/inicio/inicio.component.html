@@ -5,7 +5,7 @@
   style="padding-top: 2.5rem"
   style="position: fixed; z-index: 1"
 >
-  <h1 class="font2">Hogwarts School</h1>
+  <h1 class="font2" style="margin-top: 3rem">Hogwarts School</h1>
   <img class="LogoHome" src="./assets/imagenes/pngegg.png" />
   <h2 class="font2">Draco dormiens nunquam titilándus</h2>
   <div fxFlex="row" fxLayoutAlign="space-evenly" class="ContentedorBotones">
@@ -16,7 +16,7 @@
       mat-raised-button
       class="botones font1"
       routerLink="estudiantes"
-      (click)="ButtonOpcionInicio(1)"
+      (click)="SeleccionTabla(1)"
     >
       Estudiantes
     </button>
@@ -24,7 +24,7 @@
       mat-raised-button
       class="botones font1"
       routerLink="profesores"
-      (click)="ButtonOpcionInicio(2)"
+      (click)="SeleccionTabla(2)"
     >
       Profesores
     </button>

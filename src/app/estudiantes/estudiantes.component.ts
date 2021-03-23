@@ -7,5 +7,5 @@ import { TablaComponent } from '../tabla/tabla.component';
   styleUrls: ['./estudiantes.component.css'],
 })
 export class EstudiantesComponent extends TablaComponent implements OnInit {
-  ngOnInit(): void {}
+  ngOnInit() {}
 }

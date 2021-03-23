@@ -28,8 +28,9 @@ const ELEMENT_DATA: PersonasElement[] = [];
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class TablaComponent implements AfterViewInit, OnInit {
-  getUse: number;
   house: string;
+  getUse: number;
+  datosCargados = [];
   displayedColumns: string[] = ['name', 'patronus', 'image'];
   dataSource = new MatTableDataSource<PersonasElement>(ELEMENT_DATA);
 
@@ -41,58 +42,67 @@ export class TablaComponent implements AfterViewInit, OnInit {
     public changeDetectorRefs: ChangeDetectorRef
   ) {}
 
-  getAllEstudiantes() {
-    this.tablaService.getAllEstudiantes().subscribe((PersonasElement: any) => {
-      this.sub(PersonasElement);
-    });
+  // getEstudiantesCasas(house: any) {
+  //   this.tablaService
+  //     .getEstudiantesCasas(house)
+  //     .subscribe((PersonasElement: any) => {
+  //       this.sub(PersonasElement);
+  //     });
+  //   this.changeDetectorRefs.detectChanges();
+  // }
 
-    this.changeDetectorRefs.detectChanges();
-  }
-
-  getEstudiantesCasas(house: any) {
-    this.tablaService
-      .getEstudiantesCasas(house)
-      .subscribe((PersonasElement: any) => {
-        this.sub(PersonasElement);
-      });
-    this.changeDetectorRefs.detectChanges();
-  }
-
-  getAllProfesores() {
-    this.tablaService.getAllProfesores().subscribe((PersonasElement: any) => {
-      this.sub(PersonasElement);
-    });
-
-    this.changeDetectorRefs.detectChanges();
-  }
+  // switch (casa) {
+  //     case 1:
+  //       this.getEstudiantesCasas((this.house = 'gryffindor'));
+  //       break;
+  //     case 2:
+  //       this.getEstudiantesCasas((this.house = 'slytherin'));
+  //       break;
+  //     case 3:
+  //       this.getEstudiantesCasas((this.house = 'hufflepuff'));
+  //       break;
+  //     case 4:
+  //       this.getEstudiantesCasas((this.house = 'ravenclaw'));
+  //       break;
+  //   }
 
   // TODO: funcion a realizar dentro del subcribe
   sub(PersonasElement: any) {
+    this.dataSource.data = [];
     this.dataSource = new MatTableDataSource(PersonasElement);
     this.dataSource.data = PersonasElement;
+
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     console.log(this.dataSource.data);
   }
 
-  SeleccionTabla(): void {
-    switch (this.getUse) {
+  SeleccionTabla(getUse) {
+    switch (getUse) {
       case 1:
-        this.getAllEstudiantes();
-
+        this.tablaService
+          .getAllEstudiantes()
+          .subscribe((PersonasElement: any) => {
+            this.sub(PersonasElement);
+          });
+        this.changeDetectorRefs.detectChanges();
         break;
       case 2:
-        this.getAllProfesores();
+        this.tablaService
+          .getAllProfesores()
+          .subscribe((PersonasElement: any) => {
+            this.sub(PersonasElement);
+          });
 
         break;
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.SeleccionTabla(1);
+  }
 
   ngAfterViewInit() {
-    this.SeleccionTabla();
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    this.SeleccionTabla(this.getUse);
   }
 }
