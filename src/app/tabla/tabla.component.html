@@ -1,5 +1,5 @@
 <div fxFill fxLayout="column" fxLayoutAlign="space-evenly center">
-  <table mat-table [dataSource]="dataSource" matSort class="font1">
+  <table mat-table [dataSource]="dataSource" matSort #table1 class="font1">
     <!-- TODO: row nombre -->
     <ng-container matColumnDef="name">
       <th
@@ -29,7 +29,7 @@
       >
         Imagen
       </th>
-      <td mat-cell *matCellDef="let row">
+      <td mat-cell *matCellDef="let row" style="padding: 1rem">
         <img src="{{ row.image }}" class="imagen" />
       </td>
     </ng-container>

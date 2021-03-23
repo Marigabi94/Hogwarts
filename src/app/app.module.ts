@@ -16,6 +16,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { TablaComponent } from './tabla/tabla.component';
 import { NuevoEstudianteComponent } from './nuevo-estudiante/nuevo-estudiante.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { NuevoEstudianteComponent } from './nuevo-estudiante/nuevo-estudiante.co
     HttpClientModule,
     MatPaginatorModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -8,18 +8,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TablaService {
-  configUrl = 'http://hp-api.herokuapp.com/api/characters';
+  configUrl = 'http://hp-api.herokuapp.com/api/characters/';
   constructor(private http: HttpClient) {}
 
   public getAllEstudiantes(): Observable<PersonasElement[]> {
-    return this.http.get<PersonasElement[]>(this.configUrl + '/students');
+    return this.http.get<PersonasElement[]>(this.configUrl + 'students');
   }
 
   public getEstudiantesCasas(house): Observable<PersonasElement[]> {
-    return this.http.get<PersonasElement[]>(this.configUrl + '/house/' + house);
+    return this.http.get<PersonasElement[]>(this.configUrl + 'house/' + house);
   }
 
   public getAllProfesores(): Observable<PersonasElement[]> {
-    return this.http.get<PersonasElement[]>(this.configUrl + '/staff');
+    return this.http.get<PersonasElement[]>(this.configUrl + 'staff');
   }
 }

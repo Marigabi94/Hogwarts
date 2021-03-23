@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { TablaComponent } from '../tabla/tabla.component';
+import { Init } from '../../assets/js/ScriptSnow.js';
 
 @Component({
   selector: 'app-inicio',

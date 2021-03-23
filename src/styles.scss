@@ -27,10 +27,6 @@ $candy-app-theme: mat-light-theme(
   )
 );
 
-.mat-paginator-icon {
-  color: #ff8f00;
-}
-
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -45,7 +41,6 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #0a111f;
-  overflow-x: hidden;
 }
 .botones {
   font-size: 2.5em;
@@ -57,8 +52,9 @@ body {
   -ms-border-radius: 26px !important;
   -o-border-radius: 26px !important;
 }
-.botones:hover {
-  filter: opacity(0.5);
+.botones:hover,
+.mat-fab:hover {
+  box-shadow: -2px 2px 15px #ff8f00 !important;
 }
 .font1 {
   font-family: "Tangerine", cursive;
@@ -78,4 +74,16 @@ h1 {
 h2 {
   font-size: 2.5em;
   margin: 0;
+}
+
+.mat-fab,
+.botones {
+  color: #ff8f00 !important;
+  background-color: #52545c !important;
+}
+
+.mat-fab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

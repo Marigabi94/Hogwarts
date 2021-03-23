@@ -1,1 +1,48 @@
-<p>nuevo-estudiante works!</p>
+<div
+  fxFill
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  style="position: absolute"
+>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start start"
+    style="
+      align-self: flex-start;
+      margin: 1rem;
+      padding: 0.5rem;
+      position: fixed;
+      width: 100%;
+    "
+  >
+    <button mat-fab routerLink="/estudiantes" style="margin-right: 0.5rem">
+      <mat-icon>arrow_back</mat-icon></button
+    ><button mat-fab routerLink="">
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="font2">Nuevo Estudiante</mat-card-title>
+    </mat-card-header>
+    <input type="file" mat-card-image src="" />
+    <!-- <img
+      mat-card-image
+      type="file"
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      alt="Photo of a Shiba Inu"
+    /> -->
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz
+        breeds of dog from Japan. A small, agile dog that copes very well with
+        mountainous terrain, the Shiba Inu was originally bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

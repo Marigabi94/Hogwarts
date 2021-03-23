@@ -4,6 +4,7 @@ import {
   ViewChild,
   ViewEncapsulation,
   ChangeDetectorRef,
+  OnInit,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -16,7 +17,6 @@ export interface PersonasElement {
   name: string;
   patronus: string;
   dateOfBirth: string;
-  availableSizes: Array<string>;
 }
 
 const ELEMENT_DATA: PersonasElement[] = [];
@@ -27,7 +27,7 @@ const ELEMENT_DATA: PersonasElement[] = [];
   styleUrls: ['./tabla.component.css'],
   encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class TablaComponent implements AfterViewInit {
+export class TablaComponent implements AfterViewInit, OnInit {
   getUse: number;
   house: string;
   displayedColumns: string[] = ['name', 'patronus', 'image'];
@@ -45,32 +45,37 @@ export class TablaComponent implements AfterViewInit {
     this.tablaService.getAllEstudiantes().subscribe((PersonasElement: any) => {
       this.sub(PersonasElement);
     });
+
+    this.changeDetectorRefs.detectChanges();
   }
 
-  getEstudiantesCasas(house: any): void {
+  getEstudiantesCasas(house: any) {
     this.tablaService
       .getEstudiantesCasas(house)
       .subscribe((PersonasElement: any) => {
         this.sub(PersonasElement);
       });
+    this.changeDetectorRefs.detectChanges();
   }
 
   getAllProfesores() {
     this.tablaService.getAllProfesores().subscribe((PersonasElement: any) => {
       this.sub(PersonasElement);
     });
+
+    this.changeDetectorRefs.detectChanges();
   }
 
+  // TODO: funcion a realizar dentro del subcribe
   sub(PersonasElement: any) {
     this.dataSource = new MatTableDataSource(PersonasElement);
-    this.dataSource = PersonasElement;
-    this.changeDetectorRefs.detectChanges();
+    this.dataSource.data = PersonasElement;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource);
+    console.log(this.dataSource.data);
   }
 
-  SeleccionTabla() {
+  SeleccionTabla(): void {
     switch (this.getUse) {
       case 1:
         this.getAllEstudiantes();
@@ -83,10 +88,11 @@ export class TablaComponent implements AfterViewInit {
     }
   }
 
-  ngOnInit() {
-    this.SeleccionTabla();
-  }
+  ngOnInit() {}
+
   ngAfterViewInit() {
+    this.SeleccionTabla();
+    this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 }

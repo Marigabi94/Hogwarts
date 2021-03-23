@@ -7,9 +7,7 @@ import { TablaComponent } from '../tabla/tabla.component';
   styleUrls: ['./casas.component.css'],
 })
 export class CasasComponent extends TablaComponent {
-  ngOnInit(): void {}
-
-  SeleccionCasa(casa: number) {
+  SeleccionCasa(casa: number): void {
     switch (casa) {
       case 1:
         this.getEstudiantesCasas((this.house = 'gryffindor'));
