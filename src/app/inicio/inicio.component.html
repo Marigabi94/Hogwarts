@@ -9,7 +9,12 @@
   <img class="LogoHome" src="./assets/imagenes/pngegg.png" />
   <h2 class="font2">Draco dormiens nunquam titilándus</h2>
   <div fxFlex="row" fxLayoutAlign="space-evenly" class="ContentedorBotones">
-    <button mat-raised-button class="botones font1" routerLink="casas">
+    <button
+      mat-raised-button
+      class="botones font1"
+      routerLink="casas"
+      (click)="Snow(2)"
+    >
       Casas
     </button>
     <button

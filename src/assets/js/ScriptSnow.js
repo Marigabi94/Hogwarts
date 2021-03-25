@@ -16,11 +16,12 @@ var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
 var particles = [];
-var particleImage = new Image(); //THREE.ImageUtils.loadTexture( "/ParticleSmoke.png" );
+var particleImage = new Image();
 particleImage.src = "assets/js/ParticleSmoke.png";
 var Init = Boolean;
 function init(Init) {
-  container = document.createElement("div");
+  container = document.getElementById("snow");
+
   document.body.appendChild(container);
 
   camera = new THREE.PerspectiveCamera(

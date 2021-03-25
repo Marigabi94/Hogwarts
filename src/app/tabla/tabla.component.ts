@@ -4,6 +4,7 @@ import {
   ViewEncapsulation,
   ChangeDetectorRef,
   OnInit,
+  AfterViewInit,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -26,9 +27,11 @@ const ELEMENT_DATA: PersonasElement[] = [];
   styleUrls: ['./tabla.component.css'],
   encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class TablaComponent implements OnInit {
+export class TablaComponent implements OnInit, AfterViewInit {
   house: string;
   getUse: number;
+  sn = document.getElementById('snow');
+
   datosCargados = [];
   displayedColumns: string[] = ['name', 'patronus', 'image'];
   dataSource = new MatTableDataSource<PersonasElement>(ELEMENT_DATA);
@@ -74,9 +77,11 @@ export class TablaComponent implements OnInit {
   SeleccionTabla(getUse) {
     switch (getUse) {
       case 1:
+        this.Snow(2);
         this.getAllEstudiantes();
         break;
       case 2:
+        this.Snow(2);
         this.getAllEstudiantes();
         break;
       case 3:
@@ -93,8 +98,19 @@ export class TablaComponent implements OnInit {
         break;
     }
   }
+  Snow(opcionSnow: number) {
+    switch (opcionSnow) {
+      case 1:
+        this.sn.style.display = 'flex';
+        break;
+      case 2:
+        this.sn.style.display = 'none';
+        break;
+    }
+  }
+  ngOnInit() {}
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.SeleccionTabla(this.getUse);
   }
 }
