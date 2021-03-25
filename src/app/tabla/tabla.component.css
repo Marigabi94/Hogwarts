@@ -1,5 +1,5 @@
 .imagen {
-  width: 6rem;
+  width: 4.5rem;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -10,8 +10,7 @@
 
 .mat-cell,
 .mat-header-cell {
-  text-align: center;
-  border-bottom-color: #ff8f00;
+  text-align: center !important;
 }
 
 .mat-cell {
@@ -21,10 +20,11 @@
   font-weight: 500;
 }
 .mat-header-cell {
-  background-color: #ff8f00;
-  color: #0a111f;
+  background-color: #52545c;
+  color: #ff8f00;
   font-size: 2.5em;
   font-weight: bold;
+  box-shadow: -2px 2px 15px #ff8f00;
 }
 
 .mat-table {
@@ -36,11 +36,30 @@
   -o-border-radius: 25px 25px 0 0;
 }
 
-mat-paginator {
-  background-color: transparent;
+.mat-select-value {
   color: #ff8f00;
 }
 
-.mat-select-value {
-  color: #ff8f00 !important;
+table {
+  margin-top: 2rem;
+  width: 80%;
+}
+.mat-paginator {
+  background-color: transparent;
+  color: #ff8f00;
+  width: 80%;
+  margin-bottom: 3rem;
+}
+
+.font1 {
+  font-family: "Tangerine", cursive;
+}
+
+.showFirstLastButtons {
+  background-color: transparent !important;
+}
+.mat-paginator-icon,
+.mat-icon-button {
+  color: #ff8f00;
+  background-color: transparent;
 }

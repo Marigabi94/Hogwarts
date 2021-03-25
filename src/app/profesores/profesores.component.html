@@ -1,8 +1,20 @@
-<button mat-fab color="primary" style="margin: 1%" routerLink="">
-  <mat-icon>home</mat-icon>
-</button>
-<div fxLayout="column" fxLayoutAlign="center center">
-  <h1 class="font2">Lista de Profesores</h1>
+<div
+  fxfill
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  style="position: absolute"
+>
+  <div style="width: 100vw">
+    <button
+      mat-fab
+      style="margin: 1%; position: fixed"
+      routerLink=""
+      (click)="Snow(1)"
+    >
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+  <h1 class="font2" style="margin-top: 3rem">Lista de Profesores</h1>
   <div fxFill>
     <app-tabla></app-tabla>
   </div>

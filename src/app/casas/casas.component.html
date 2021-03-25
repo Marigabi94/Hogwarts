@@ -1,21 +1,37 @@
-<button mat-fab color="primary" style="margin: 1%" routerLink="">
-  <mat-icon>home</mat-icon>
-</button>
-<div fxLayout="column" fxLayoutAlign="space-evenly center" style="width: 100%">
-  <div fxFill fxLayout="row" fxLayoutAlign="space-evenly center">
+<div
+  fxfill
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  style="position: absolute"
+>
+  <div style="width: 100vw">
+    <button
+      mat-fab
+      style="margin: 1%; position: fixed"
+      routerLink=""
+      (click)="Snow(1)"
+    >
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-evenly center"
+    style="width: 100%; margin-top: 5rem"
+  >
     <div
       fxLayout="column"
       fxLayoutAlign="center center"
       type="submit"
       style="cursor: pointer"
-      (click)="SeleccionCasa()"
+      (click)="SeleccionTabla(3)"
     >
       <h2 class="font2">Gryffindor</h2>
       <img
         id="gryffindor"
         class="Escudos"
         src="./assets/imagenes/gryffindor.png"
-        (click)="SeleccionP()"
       />
     </div>
     <div
@@ -23,6 +39,7 @@
       fxLayoutAlign="center center"
       type="submit"
       style="cursor: pointer"
+      (click)="SeleccionTabla(4)"
     >
       <h2 class="font2">Slytherin</h2>
       <img class="Escudos" src="./assets/imagenes/slytherin.png" />
@@ -32,6 +49,7 @@
       fxLayoutAlign="center center"
       type="submit"
       style="cursor: pointer"
+      (click)="SeleccionTabla(5)"
     >
       <h2 class="font2">Hufflepuff</h2>
       <img class="Escudos" src="./assets/imagenes/hufflepuff.png" />
@@ -41,6 +59,7 @@
       fxLayoutAlign="center center"
       type="submit"
       style="cursor: pointer"
+      (click)="SeleccionTabla(6)"
     >
       <h2 class="font2">Ravenclaw</h2>
       <img class="Escudos" src="./assets/imagenes/ravenclaw.png" />
