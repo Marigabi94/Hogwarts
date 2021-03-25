@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ViewChild,
   ViewEncapsulation,
@@ -27,7 +26,7 @@ const ELEMENT_DATA: PersonasElement[] = [];
   styleUrls: ['./tabla.component.css'],
   encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class TablaComponent implements AfterViewInit, OnInit {
+export class TablaComponent implements OnInit {
   house: string;
   getUse: number;
   datosCargados = [];
@@ -42,30 +41,6 @@ export class TablaComponent implements AfterViewInit, OnInit {
     public changeDetectorRefs: ChangeDetectorRef
   ) {}
 
-  // getEstudiantesCasas(house: any) {
-  //   this.tablaService
-  //     .getEstudiantesCasas(house)
-  //     .subscribe((PersonasElement: any) => {
-  //       this.sub(PersonasElement);
-  //     });
-  //   this.changeDetectorRefs.detectChanges();
-  // }
-
-  // switch (casa) {
-  //     case 1:
-  //       this.getEstudiantesCasas((this.house = 'gryffindor'));
-  //       break;
-  //     case 2:
-  //       this.getEstudiantesCasas((this.house = 'slytherin'));
-  //       break;
-  //     case 3:
-  //       this.getEstudiantesCasas((this.house = 'hufflepuff'));
-  //       break;
-  //     case 4:
-  //       this.getEstudiantesCasas((this.house = 'ravenclaw'));
-  //       break;
-  //   }
-
   // TODO: funcion a realizar dentro del subcribe
   sub(PersonasElement: any) {
     this.dataSource.data = [];
@@ -76,33 +51,50 @@ export class TablaComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     console.log(this.dataSource.data);
   }
+  getAllEstudiantes() {
+    this.tablaService.getAllEstudiantes().subscribe((PersonasElement: any) => {
+      this.sub(PersonasElement);
+    });
+    this.changeDetectorRefs.detectChanges();
+  }
+  getAllProfesores() {
+    this.tablaService.getAllProfesores().subscribe((PersonasElement: any) => {
+      this.sub(PersonasElement);
+    });
+    this.changeDetectorRefs.detectChanges();
+  }
 
+  getEstudiantesCasas(house: any) {
+    this.tablaService
+      .getEstudiantesCasas(house)
+      .subscribe((PersonasElement: any) => {
+        this.sub(PersonasElement);
+      });
+  }
   SeleccionTabla(getUse) {
     switch (getUse) {
       case 1:
-        this.tablaService
-          .getAllEstudiantes()
-          .subscribe((PersonasElement: any) => {
-            this.sub(PersonasElement);
-          });
-        this.changeDetectorRefs.detectChanges();
+        this.getAllEstudiantes();
         break;
       case 2:
-        this.tablaService
-          .getAllProfesores()
-          .subscribe((PersonasElement: any) => {
-            this.sub(PersonasElement);
-          });
-
+        this.getAllEstudiantes();
+        break;
+      case 3:
+        this.getEstudiantesCasas('gryffindor');
+        break;
+      case 4:
+        this.getEstudiantesCasas('slytherin');
+        break;
+      case 5:
+        this.getEstudiantesCasas('hufflepuff');
+        break;
+      case 6:
+        this.getEstudiantesCasas('ravenclaw');
         break;
     }
   }
 
   ngOnInit() {
-    this.SeleccionTabla(1);
-  }
-
-  ngAfterViewInit() {
     this.SeleccionTabla(this.getUse);
   }
 }
