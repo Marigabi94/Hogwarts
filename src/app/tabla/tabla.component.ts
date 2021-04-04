@@ -4,8 +4,8 @@ import {
   ViewEncapsulation,
   ChangeDetectorRef,
   OnInit,
-  AfterViewInit,
 } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,10 +16,7 @@ export interface PersonasElement {
   image: string;
   name: string;
   patronus: string;
-  dateOfBirth: string;
 }
-
-const ELEMENT_DATA: PersonasElement[] = [];
 
 @Component({
   selector: 'app-tabla',
@@ -27,77 +24,84 @@ const ELEMENT_DATA: PersonasElement[] = [];
   styleUrls: ['./tabla.component.css'],
   encapsulation: ViewEncapsulation.ShadowDom,
 })
-export class TablaComponent implements OnInit, AfterViewInit {
-  house: string;
-  getUse: number;
+export class TablaComponent implements OnInit {
   sn = document.getElementById('snow');
-
-  datosCargados = [];
   displayedColumns: string[] = ['name', 'patronus', 'image'];
-  dataSource = new MatTableDataSource<PersonasElement>(ELEMENT_DATA);
+  dataSourceProfesores: MatTableDataSource<PersonasElement>;
+  dataSourceEstudiantes: MatTableDataSource<PersonasElement>;
+  dataSourceGryffindor: MatTableDataSource<PersonasElement>;
+  dataSourceSlytherin: MatTableDataSource<PersonasElement>;
+  dataSourceHufflepuff: MatTableDataSource<PersonasElement>;
+  dataSourceRavenclaw: MatTableDataSource<PersonasElement>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  // TODO: CONSTRUCTOR
   constructor(
     public tablaService: TablaService,
-    public changeDetectorRefs: ChangeDetectorRef
+    public changeDetectorRefs: ChangeDetectorRef,
+    public fb: FormBuilder
   ) {}
 
-  // TODO: funcion a realizar dentro del subcribe
-  sub(PersonasElement: any) {
-    this.dataSource.data = [];
-    this.dataSource = new MatTableDataSource(PersonasElement);
-    this.dataSource.data = PersonasElement;
-
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource.data);
-  }
+  // TODO: GET ESTUDIANTES
   getAllEstudiantes() {
     this.tablaService.getAllEstudiantes().subscribe((PersonasElement: any) => {
-      this.sub(PersonasElement);
-    });
-    this.changeDetectorRefs.detectChanges();
-  }
-  getAllProfesores() {
-    this.tablaService.getAllProfesores().subscribe((PersonasElement: any) => {
-      this.sub(PersonasElement);
+      this.dataSourceEstudiantes = new MatTableDataSource(PersonasElement);
+      this.dataSourceEstudiantes.data = PersonasElement;
+      this.dataSourceEstudiantes.paginator = this.paginator;
+      this.dataSourceEstudiantes.sort = this.sort;
     });
     this.changeDetectorRefs.detectChanges();
   }
 
+  // TODO: GET PROFESORES
+  getAllProfesores() {
+    this.tablaService.getAllProfesores().subscribe((PersonasElement: any) => {
+      this.dataSourceProfesores = new MatTableDataSource(PersonasElement);
+      this.dataSourceProfesores.data = PersonasElement;
+      this.dataSourceProfesores.sort = this.sort;
+      this.dataSourceProfesores.paginator = this.paginator;
+    });
+    this.changeDetectorRefs.detectChanges();
+  }
+
+  // TODO: GET ESTUDIANTES CASAS
   getEstudiantesCasas(house: any) {
     this.tablaService
       .getEstudiantesCasas(house)
       .subscribe((PersonasElement: any) => {
-        this.sub(PersonasElement);
+        switch (house) {
+          case 'gryffindor':
+            this.dataSourceGryffindor = new MatTableDataSource(PersonasElement);
+            this.dataSourceGryffindor.data = PersonasElement;
+            this.dataSourceGryffindor.paginator = this.paginator;
+            this.dataSourceGryffindor.sort = this.sort;
+            break;
+          case 'hufflepuff':
+            this.dataSourceHufflepuff = new MatTableDataSource(PersonasElement);
+            this.dataSourceHufflepuff.data = PersonasElement;
+            this.dataSourceHufflepuff.paginator = this.paginator;
+            this.dataSourceHufflepuff.sort = this.sort;
+            break;
+          case 'ravenclaw':
+            this.dataSourceRavenclaw = new MatTableDataSource(PersonasElement);
+            this.dataSourceRavenclaw.data = PersonasElement;
+            this.dataSourceRavenclaw.paginator = this.paginator;
+            this.dataSourceRavenclaw.sort = this.sort;
+            break;
+          case 'slytherin':
+            this.dataSourceSlytherin = new MatTableDataSource(PersonasElement);
+            this.dataSourceSlytherin.data = PersonasElement;
+            this.dataSourceSlytherin.paginator = this.paginator;
+            this.dataSourceSlytherin.sort = this.sort;
+            break;
+        }
       });
+    this.changeDetectorRefs.detectChanges();
   }
-  SeleccionTabla(getUse) {
-    switch (getUse) {
-      case 1:
-        this.Snow(2);
-        this.getAllEstudiantes();
-        break;
-      case 2:
-        this.Snow(2);
-        this.getAllEstudiantes();
-        break;
-      case 3:
-        this.getEstudiantesCasas('gryffindor');
-        break;
-      case 4:
-        this.getEstudiantesCasas('slytherin');
-        break;
-      case 5:
-        this.getEstudiantesCasas('hufflepuff');
-        break;
-      case 6:
-        this.getEstudiantesCasas('ravenclaw');
-        break;
-    }
-  }
+
+  // TODO: ACTIVAR DESACTIVAR EFECTO DE NIEVE
   Snow(opcionSnow: number) {
     switch (opcionSnow) {
       case 1:
@@ -108,9 +112,9 @@ export class TablaComponent implements OnInit, AfterViewInit {
         break;
     }
   }
-  ngOnInit() {}
 
-  ngAfterViewInit() {
-    this.SeleccionTabla(this.getUse);
+  // TODO: ngOnInit
+  ngOnInit() {
+    this.getAllProfesores();
   }
 }

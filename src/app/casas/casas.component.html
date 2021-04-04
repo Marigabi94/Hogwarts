@@ -5,67 +5,51 @@
   style="position: absolute"
 >
   <div style="width: 100vw">
-    <button
-      mat-fab
-      style="margin: 1%; position: fixed"
-      routerLink=""
-      (click)="Snow(1)"
-    >
+    <button mat-fab style="margin: 1%; position: fixed" routerLink="">
       <mat-icon>home</mat-icon>
     </button>
   </div>
 
-  <div
-    fxLayout="row"
-    fxLayoutAlign="space-evenly center"
-    style="width: 100%; margin-top: 5rem"
-  >
-    <div
-      fxLayout="column"
-      fxLayoutAlign="center center"
-      type="submit"
-      style="cursor: pointer"
-      (click)="SeleccionTabla(3)"
-    >
-      <h2 class="font2">Gryffindor</h2>
-      <img
-        id="gryffindor"
-        class="Escudos"
-        src="./assets/imagenes/gryffindor.png"
-      />
-    </div>
-    <div
-      fxLayout="column"
-      fxLayoutAlign="center center"
-      type="submit"
-      style="cursor: pointer"
-      (click)="SeleccionTabla(4)"
-    >
-      <h2 class="font2">Slytherin</h2>
-      <img class="Escudos" src="./assets/imagenes/slytherin.png" />
-    </div>
-    <div
-      fxLayout="column"
-      fxLayoutAlign="center center"
-      type="submit"
-      style="cursor: pointer"
-      (click)="SeleccionTabla(5)"
-    >
-      <h2 class="font2">Hufflepuff</h2>
-      <img class="Escudos" src="./assets/imagenes/hufflepuff.png" />
-    </div>
-    <div
-      fxLayout="column"
-      fxLayoutAlign="center center"
-      type="submit"
-      style="cursor: pointer"
-      (click)="SeleccionTabla(6)"
-    >
-      <h2 class="font2">Ravenclaw</h2>
-      <img class="Escudos" src="./assets/imagenes/ravenclaw.png" />
-    </div>
-  </div>
-  <div fxFill>
-    <app-tabla></app-tabla>
-  </div>
+  <mat-tab-group style="margin-top: 5rem; width: 100vw" animationDuration="0">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <h2 class="font2">Gryffindor</h2>
+          <img
+            id="gryffindor"
+            class="Escudos"
+            src="./assets/imagenes/gryffindor.png"
+          />
+        </div>
+      </ng-template>
+      <app-tablagryffindor></app-tablagryffindor>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <h2 class="font2">Slytherin</h2>
+          <img class="Escudos" src="./assets/imagenes/slytherin.png" />
+        </div>
+      </ng-template>
+      <app-tablaslytherin></app-tablaslytherin>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <h2 class="font2">Hufflepuff</h2>
+          <img class="Escudos" src="./assets/imagenes/hufflepuff.png" />
+        </div>
+      </ng-template>
+      <app-tablahufflepuff></app-tablahufflepuff>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <h2 class="font2">Ravenclaw</h2>
+          <img class="Escudos" src="./assets/imagenes/ravenclaw.png" />
+        </div>
+      </ng-template>
+      <app-tablaravenclaw></app-tablaravenclaw>
+    </mat-tab>
+  </mat-tab-group>
 </div>

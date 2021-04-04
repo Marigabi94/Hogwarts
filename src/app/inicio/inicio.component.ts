@@ -8,5 +8,7 @@ import { Init } from '../../assets/js/ScriptSnow.js';
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent extends TablaComponent implements OnInit {
-  ngOnInit() {}
+  ngOnInit() {
+    this.Snow(1);
+  }
 }

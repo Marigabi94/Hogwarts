@@ -1,5 +1,6 @@
 .imagen {
   width: 4.5rem;
+  height: 6.5rem;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -62,4 +63,11 @@ table {
 .mat-icon-button {
   color: #ff8f00;
   background-color: transparent;
+}
+th.mat-header-cell {
+  width: 8em;
+}
+.mat-sort-header-container {
+  width: 8em;
+  justify-content: center;
 }
