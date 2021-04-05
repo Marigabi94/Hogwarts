@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
 import { TablaComponent } from '../tabla/tabla.component';
 
 @Component({
