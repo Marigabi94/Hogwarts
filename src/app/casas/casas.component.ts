@@ -6,4 +6,8 @@ import { TablaComponent } from '../tabla/tabla.component';
   templateUrl: './casas.component.html',
   styleUrls: ['./casas.component.css'],
 })
-export class CasasComponent extends TablaComponent {}
+export class CasasComponent extends TablaComponent implements OnInit {
+  ngOnInit() {
+    this.Snow(2);
+  }
+}

@@ -5,18 +5,13 @@
   style="position: absolute"
 >
   <div style="width: 100vw">
-    <button
-      mat-fab
-      style="margin: 1%; position: fixed"
-      routerLink=""
-      (click)="Snow(1)"
-    >
+    <button mat-fab style="margin: 1%; position: fixed" routerLink="">
       <mat-icon>home</mat-icon>
     </button>
   </div>
   <h1 class="font2" style="margin-top: 3rem">Lista de Estudiantes</h1>
   <div fxFill>
-    <app-tabla></app-tabla>
+    <app-tablaraallestudiantes></app-tablaraallestudiantes>
   </div>
   <button mat-raised-button class="botones font1" routerLink="./nuevo">
     Nuevo Estudiante

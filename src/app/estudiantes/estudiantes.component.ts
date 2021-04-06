@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TablaComponent } from '../tabla/tabla.component';
 
 @Component({
@@ -7,5 +7,7 @@ import { TablaComponent } from '../tabla/tabla.component';
   styleUrls: ['./estudiantes.component.css'],
 })
 export class EstudiantesComponent extends TablaComponent implements OnInit {
-  ngOnInit() {}
+  ngOnInit() {
+    this.Snow(2);
+  }
 }

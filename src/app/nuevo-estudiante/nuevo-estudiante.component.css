@@ -28,3 +28,22 @@
 .font2 {
   font-size: 3em;
 }
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: white;
+}
+::ng-deep mat-form-field.mat-form-field {
+  color: white;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgba(255, 255, 255, 0.507);
+}
+
+::ng-deep .mat-icon-button .mat-datepicker-toggle-default-icon {
+  color: white;
+}
+
+::ng-deep .mat-form-field-label {
+  color: white;
+}

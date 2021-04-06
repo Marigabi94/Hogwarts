@@ -17,32 +17,80 @@
   >
     <button mat-fab routerLink="/estudiantes" style="margin-right: 0.5rem">
       <mat-icon>arrow_back</mat-icon></button
-    ><button mat-fab routerLink="" (click)="Snow(1)">
+    ><button mat-fab routerLink="">
       <mat-icon>home</mat-icon>
     </button>
   </div>
 
-  <mat-card class="card">
+  <mat-card class="card" fxLayout="column" fxLayoutAlign="space-evenly none">
     <mat-card-header>
       <mat-card-title class="font2">Nuevo Estudiante</mat-card-title>
     </mat-card-header>
-    <input type="file" mat-card-image src="" />
-    <!-- <img
-      mat-card-image
-      type="file"
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-      alt="Photo of a Shiba Inu"
-    /> -->
-    <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz
-        breeds of dog from Japan. A small, agile dog that copes very well with
-        mountainous terrain, the Shiba Inu was originally bred for hunting.
-      </p>
+
+    <mat-card-content style="padding-right: 20%; padding-left: 20%">
+      <form
+        [formGroup]="myForm"
+        fxLayout="column"
+        fxLayoutAlign="space-between stretch"
+        novalidate
+      >
+        <div fxLayout="row" fxLayoutAlign="space-between stretch">
+          <div fxLayout="column" fxLayoutAlign="space-between stretch">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre</mat-label>
+              <input matInput placeholder="Nombre" formControlName="nombre" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Patronus</mat-label>
+              <input
+                matInput
+                placeholder="Patronus"
+                formControlName="patronus"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="space-between stretch">
+            <mat-form-field appearance="outline">
+              <mat-label>Apellido</mat-label>
+              <input
+                matInput
+                placeholder="Apellido"
+                formControlName="apellido"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="fechanacimiento"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Foto</mat-label>
+          <ngx-mat-file-input
+            placeholder="Foto"
+            accept="'image/*'"
+            formControlName="foto"
+          ></ngx-mat-file-input>
+          <mat-icon matSuffix>image</mat-icon>
+        </mat-form-field>
+
+        <div class="button-wrapper">
+          <button mat-raised-button class="Boton1 font1" color="primary">
+            Submit
+          </button>
+        </div>
+      </form>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
   </mat-card>
 </div>
