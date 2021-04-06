@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TablaService {
-  configUrl = 'http://hp-api.herokuapp.com/api/characters/';
+  configUrl = 'https://hp-api.herokuapp.com/api/characters/';
   constructor(private http: HttpClient) {}
 
   public getAllEstudiantes(): Observable<PersonasElement[]> {
